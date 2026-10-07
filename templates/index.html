@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خير - تطبيق التبرعات</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="admin-header">
+    <span class="crown">👑</span>
+    <span class="admin-title">TEAM AL-HAKIM</span>
+    <span class="crown">👑</span>
+  </div>
+  <div class="app-name">❤️ خير - تطبيق التبرعات</div>
+  <nav>
+    <a href="/">الرئيسية</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>ساعد من يحتاجك</h2>
+  <p>تبرعك الصغير بيغير حياة كبيرة</p>
+</section>
+
+<section class="categories">
+  <h3>التصنيفات</h3>
+  <div class="category-grid">
+    <a href="/category/orphans" class="category-card">
+      <span>👶</span>
+      <h4>أيتام</h4>
+    </a>
+    <a href="/category/poor" class="category-card">
+      <span>🍞</span>
+      <h4>مساكين</h4>
+    </a>
+    <a href="/category/gaza" class="category-card">
+      <span>🇵🇸</span>
+      <h4>غزة</h4>
+    </a>
+    <a href="/category/brides" class="category-card">
+      <span>💍</span>
+      <h4>عرايس</h4>
+    </a>
+  </div>
+</section>
+
+<section class="cases">
+  <h3>أحدث الحالات</h3>
+  <div class="case-grid">
+    {% for case in cases %}
+    <div class="case-card">
+      <div class="case-img">{{ case[6] }}</div>
+      <h4>{{ case[1] }}</h4>
+      <p>{{ case[2] }}</p>
+      <div class="progress">
+        <div class="progress-bar" style="width: {{ (case[5] / case[4] * 100)|int }}%"></div>
+      </div>
+      <p class="amount">تم جمع {{ case[5] }} من {{ case[4] }} جنيه</p>
+      <a href="/case/{{ case[0] }}" class="donate-btn">تبرع الآن</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 خير - جميع الحقوق محفوظة</p>
+</footer>
+
+</body>
+</html>

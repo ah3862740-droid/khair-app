@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ case[1] }} - خير</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="admin-header">
+    <span class="crown">👑</span>
+    <span class="admin-title">TEAM AL-HAKIM</span>
+    <span class="crown">👑</span>
+  </div>
+  <div class="app-name"><a href="/" style="color:white;text-decoration:none;">❤️ خير - تطبيق التبرعات</a></div>
+</header>
+
+<section class="hero" style="padding: 40px 20px;">
+  <div style="font-size: 100px; margin-bottom: 20px;">{{ case[6] }}</div>
+  <h2>{{ case[1] }}</h2>
+  <p>{{ case[2] }}</p>
+</section>
+
+<section style="padding: 40px 20px; max-width: 600px; margin: 0 auto;">
+  <div class="progress" style="height: 30px; margin-bottom: 20px;">
+    <div class="progress-bar" style="width: {{ (case[5] / case[4] * 100)|int }}%; line-height: 30px; color: white; text-align: center; font-weight: bold;">
+      {{ (case[5] / case[4] * 100)|int }}%
+    </div>
+  </div>
+  <p style="text-align: center; font-size: 20px; margin-bottom: 30px;">
+    تم جمع <strong>{{ case[5] }}</strong> من <strong>{{ case[4] }}</strong> جنيه
+  </p>
+
+  <h3 style="text-align: center; margin-bottom: 20px;">تبرع الآن ❤️</h3>
+  <form method="POST" action="/donate/{{ case[0] }}" style="display: flex; flex-direction: column; gap: 15px;">
+    <input type="text" name="donor_name" placeholder="اسمك (اختياري)" 
+           style="padding: 15px; border: 2px solid #e91e63; border-radius: 10px; font-size: 16px;">
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      <button type="button" onclick="setAmount(50)" class="amount-btn">50 ج</button>
+      <button type="button" onclick="setAmount(100)" class="amount-btn">100 ج</button>
+      <button type="button" onclick="setAmount(500)" class="amount-btn">500 ج</button>
+      <button type="button" onclick="setAmount(1000)" class="amount-btn">1000 ج</button>
+    </div>
+    
+    <input type="number" name="amount" id="amount" placeholder="المبلغ" required
+           style="padding: 15px; border: 2px solid #e91e63; border-radius: 10px; font-size: 16px;">
+    
+    <button type="submit" class="cta-btn" style="width: 100%;">تبرع الآن ❤️</button>
+  </form>
+</section>
+
+<script>
+function setAmount(val) {
+  document.getElementById('amount').value = val;
+}
+</script>
+
+</body>
+</html>
